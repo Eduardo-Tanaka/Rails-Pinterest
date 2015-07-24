@@ -1,0 +1,8 @@
+<% @pins.each do |pin| %>
+  <div class="">
+    <%= link_to "Q", pin_path(pin) %>
+  </div>
+  <div class="">
+    Posted by <%= pin.user.email %>
+  </div>
+<% end %>
