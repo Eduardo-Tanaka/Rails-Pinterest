@@ -1,38 +1,32 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= image_tag @pin.asset.url, class: "img-responsive" %>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= @pin.title %>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= @pin.description %>
-  </div>
-</div>
-
-<br />
-
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <ul class="nav navbar-nav">
-      <li><a><small>Posted by <%= @pin.user.email %></small></a></li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li>
-        <%= link_to like_pin_path(@pin), class:"btn btn-default btn-sm", method: :put do %>
-          <span class="glyphicon glyphicon-heart">  <%= @pin.get_upvotes.size  %>
-        <% end %>
-      </li>
-      <% if signed_in? %>
-        <li><%= link_to "Edit", edit_pin_path(@pin), class:"btn btn-default btn-sm" %></li>
-        <li><%= link_to "Delete", @pin, class:"btn btn-default btn-sm", method: :delete, data: { confirm: "Are you sure?" } %></li>
-      <% end %>
-    </ul>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <%= image_tag @pin.asset.url, class: "img-responsive" %>
+      </div>
+      <div class="panel-body">
+        <h1><%= @pin.title %></h1>
+        <%= @pin.description %>
+      </div>
+      <div class="panel-footer">
+        <div class="row">
+          <div class="col-md-10">
+            <p><small>Posted by <%= @pin.user.email %></small></p>
+          </div>
+            <%= link_to like_pin_path(@pin), class:"btn btn-default btn-sm", method: :put do %>
+              <span class="glyphicon glyphicon-heart">  <%= @pin.get_upvotes.size  %>
+            <% end %>
+        </div>
+        <div class="row">
+          <div class="col-md-9">
+            <p><small>Posted <%= time_ago_in_words(@pin.created_at) %> ago.</small></p>
+          </div>
+          <% if signed_in? %>
+            <%= link_to "Edit", edit_pin_path(@pin), class:"btn btn-default btn-sm" %>
+            <%= link_to "Delete", @pin, class:"btn btn-default btn-sm", method: :delete, data: { confirm: "Are you sure?" } %>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

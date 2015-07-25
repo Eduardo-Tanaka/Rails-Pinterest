@@ -1,11 +1,11 @@
-<% @pins.each do |pin| %>
-  <div class="">
-    <%= link_to (image_tag pin.asset.url), pin_path(pin) %>
-  </div>
-  <div class="">
-    <%= pin.title %>
-  </div>
-  <div class="">
-    Posted by <%= pin.user.email %>
-  </div>
-<% end %>
+<div class="row">
+  <% @pins.each do |pin| %>
+    <div class="col-md-4">
+      <div class="thumbnail">
+        <%= link_to (image_tag pin.asset.url, class:'img-responsive'), pin_path(pin) %>
+        <p><%= pin.title %></p>
+        <p><small>Posted by <%= pin.user.email %> <%= time_ago_in_words(pin.created_at) %> ago.</small></p>
+      </div>
+    </div>
+  <% end %>
+</div>

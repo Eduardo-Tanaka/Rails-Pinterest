@@ -1,39 +1,41 @@
 <%= form_for @pin do |f| %>
   <div class="row">
     <div class="form-group col-md-6 col-md-offset-3">
-      <%= f.label :title %>
-      <%= f.text_field :title, class: "form-control" %>
-    </div>
-  </div>
+      <% if @pin.errors.any? %>
+        <div class="alert alert-danger">
+          <% @pin.errors.full_messages.each do |e| %>
+            <p><%= e %></p>
+          <% end %>
+        </div>
+      <% end %>
 
-  <div class="row">
-    <div class="form-group col-md-6 col-md-offset-3">
-      <%= f.label :description %>
-      <%= f.text_area :description, class: "form-control" %>
-    </div>
-  </div>
+      <div class="form-group">
+        <%= f.label :title %>
+        <%= f.text_field :title, class: "form-control" %>
+      </div>
 
-  <div class="row">
-    <div class="form-group col-md-6 col-md-offset-3">
-      <%= f.label :asset %>
-      <%= f.file_field :asset %>
-    </div>
-  </div>
+      <div class="form-group">
+        <%= f.label :description %>
+        <%= f.text_area :description, rows: 7, class: "form-control" %>
+      </div>
 
-  <% if @pin.asset? %>
-    <div class="row">
-      <div class="form-group col-md-6 col-md-offset-3">
-        <%= image_tag(@pin.asset_url, class:"img-responsive") %>
-        <%= link_to asset_pin_path(@pin), method: :put do %>
-          Delete image <span class="glyphicon glyphicon-trash">
+      <div class="form-group">
+        <%= f.label :asset %>
+        <%= f.file_field :asset %>
+      </div>
+
+      <div class="form-group">
+        <% if @pin.asset? %>
+          <%= image_tag(@pin.asset_url, class:"img-responsive") %>
+          <%= link_to asset_pin_path(@pin), method: :put, data: { confirm: "delete?" } do %>
+            Delete image <span class="glyphicon glyphicon-trash">
+          <% end %>
         <% end %>
       </div>
-    </div>
-  <% end %>
 
-  <div class="row">
-    <div class="form-group col-md-6 col-md-offset-3">
-      <%= f.submit "Save", class: "btn btn-primary form-control" %>
+      <div class="form-group">
+        <%= f.submit "Save", class: "btn btn-primary form-control" %>
+      </div>
     </div>
   </div>
 <% end %>
