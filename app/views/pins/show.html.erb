@@ -16,14 +16,23 @@
   </div>
 </div>
 
+<br />
+
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <ul class="nav navbar-nav">
       <li><a><small>Posted by <%= @pin.user.email %></small></a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><%= link_to "Edit", edit_pin_path(@pin) %></li>
-      <li><%= link_to "Delete", @pin, method: :delete, data: { confirm: "Are you sure?" } %></li>
+      <li>
+        <%= link_to like_pin_path(@pin), class:"btn btn-default btn-sm", method: :put do %>
+          <span class="glyphicon glyphicon-heart">  <%= @pin.get_upvotes.size  %>
+        <% end %>
+      </li>
+      <% if signed_in? %>
+        <li><%= link_to "Edit", edit_pin_path(@pin), class:"btn btn-default btn-sm" %></li>
+        <li><%= link_to "Delete", @pin, class:"btn btn-default btn-sm", method: :delete, data: { confirm: "Are you sure?" } %></li>
+      <% end %>
     </ul>
   </div>
 </div>

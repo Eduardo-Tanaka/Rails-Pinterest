@@ -20,11 +20,16 @@
     </div>
   </div>
 
-  <div class="row">
-    <div class="form-group col-md-6 col-md-offset-3">
-      <%= image_tag(@pin.asset_url, class:"img-responsive") if @pin.asset? %>
+  <% if @pin.asset? %>
+    <div class="row">
+      <div class="form-group col-md-6 col-md-offset-3">
+        <%= image_tag(@pin.asset_url, class:"img-responsive") %>
+        <%= link_to asset_pin_path(@pin), method: :put do %>
+          Delete image <span class="glyphicon glyphicon-trash">
+        <% end %>
+      </div>
     </div>
-  </div>
+  <% end %>
 
   <div class="row">
     <div class="form-group col-md-6 col-md-offset-3">
