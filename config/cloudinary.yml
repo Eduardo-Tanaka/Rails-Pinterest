@@ -1,0 +1,9 @@
+development:
+  cloud_name: 'hg3sqmwuk'
+  api_key: '463699424247497'
+  api_secret: '1D4QBspuk83PCvDFyrpTxQrQCdE'
+
+production:
+  cloud_name: 'hg3sqmwuk'
+  api_key: '463699424247497'
+  api_secret: '1D4QBspuk83PCvDFyrpTxQrQCdE'
