@@ -2,7 +2,7 @@
   <div class="col-md-6 col-md-offset-3">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <%= image_tag @pin.asset.url, class: "img-responsive" %>
+        <%= image_tag @pin.asset.url(:standard), class: "img-responsive" %>
       </div>
       <div class="panel-body">
         <h1><%= @pin.title %></h1>

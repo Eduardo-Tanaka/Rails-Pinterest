@@ -26,7 +26,7 @@
 
       <div class="form-group">
         <% if @pin.asset? %>
-          <%= image_tag(@pin.asset_url, class:"img-responsive") %>
+          <%= image_tag(@pin.asset_url(:standard), class:"img-responsive") %>
           <%= link_to asset_pin_path(@pin), method: :put, data: { confirm: "delete?" } do %>
             Delete image <span class="glyphicon glyphicon-trash">
           <% end %>

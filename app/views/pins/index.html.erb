@@ -2,7 +2,7 @@
   <% @pins.each do |pin| %>
     <div class="col-md-4">
       <div class="thumbnail">
-        <%= link_to (image_tag pin.asset.url, class:'img-responsive'), pin_path(pin) %>
+        <%= link_to (image_tag pin.asset.url(:thumbnail), class:'img-responsive'), pin_path(pin) %>
         <p><%= pin.title %></p>
         <p><small>Posted by <%= pin.user.email %> <%= time_ago_in_words(pin.created_at) %> ago.</small></p>
       </div>
