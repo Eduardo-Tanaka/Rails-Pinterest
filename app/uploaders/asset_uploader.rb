@@ -4,7 +4,9 @@ class AssetUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-  include CarrierWave::MiniMagick
+  # include CarrierWave::MiniMagick
+  include Cloudinary::CarrierWave
+
 
   # Choose what kind of storage to use for this uploader:
   storage :file
@@ -47,9 +49,18 @@ class AssetUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
-  process resize_to_fit: [600, 400]
+  #process resize_to_fit: [600, 400]
 
-  version :thumb do
-    process resize_to_fill: [200,200]
+  #version :thumb do
+  #  process resize_to_fill: [200,200]
+  #end
+  
+
+  version :standard do
+    process :resize_to_fill => [600, 400, :north]
+  end
+
+  version :thumbnail do
+    process :resize_to_fit => [100, 100]
   end
 end

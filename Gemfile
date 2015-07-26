@@ -32,6 +32,8 @@ gem 'carrierwave', '~> 0.10.0'
 gem 'mini_magick', '~> 4.2.7'
 gem 'devise', '~> 3.5.1'
 gem 'acts_as_votable', '~> 0.10.0'
+gem 'cloudinary', '~> 1.1.0'
+
 
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
